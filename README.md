@@ -52,8 +52,20 @@ create linux br, e.g., br0
 brctl addbr br0
 ```
 
+create linux br if, e.g., if0
+
+```
+?
+```
+
 create ovs br, e.g., br1
 
 ```
 ovs-vsctl add-br br1
+```
+
+create ovs br port, e.g., port0
+
+```
+?
 ```
