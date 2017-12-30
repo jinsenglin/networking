@@ -10,8 +10,50 @@ create ns, e.g. ns1
 ip netns add ns1
 ```
 
-print routes in specified ns, e.g. ns1
+turn on kernel ip forwarding
 
 ```
-ip netns exec ns1 route -n
+sysctl net.ipv4.ip_forward=1
+```
+
+create veth pair, e.g., veth0 and veth1
+
+```
+ip link add veth0 type veth peer name veth1
+```
+
+create tap, e.g., tap0
+
+```
+ip tuntap add name tap0 mode tap
+```
+
+create tun, e.g., tun0
+
+```
+ip tuntap add name tun0 mode tun
+```
+
+create route, e.g., default gw via 10.0.2.2
+
+```
+ip route add default via 10.0.2.2
+```
+
+create firewall rule, e.g., FORWARD chain ACCEPT policy by default
+
+```
+iptables -P FORWARD ACCEPT
+```
+
+create linux br, e.g., br0
+
+```
+brctl addbr br0
+```
+
+create ovs br, e.g., br1
+
+```
+ovs-vsctl add-br br1
 ```
