@@ -21,11 +21,11 @@ Vagrant.configure("2") do |config|
     # Install linux bridge
     apt-get install -y bridge-utils
 
-    # Print kernel ip forwarding on/off
-    sysctl net.ipv4.ip_forward
-
     # Print net namespace
     ip netns ls
+
+    # Print kernel ip forwarding on/off in current net namespace
+    sysctl net.ipv4.ip_forward
 
     # Printe links in current net namespace
     ip link
