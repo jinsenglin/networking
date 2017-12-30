@@ -16,6 +16,12 @@ turn on kernel ip forwarding
 sysctl net.ipv4.ip_forward=1
 ```
 
+turn on nic promisc mode, e.g., enp0s3
+
+```
+ifconfig enp0s3 promisc
+```
+
 create veth pair, e.g., veth0 and veth1
 
 ```
