@@ -33,6 +33,9 @@ Vagrant.configure("2") do |config|
     # Printe addresses in current net namespace
     ip a
 
+    # Print arp table in current net namespace
+    arp -n
+
     # Print routes in current net namespace
     route -n
 
