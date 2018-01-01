@@ -20,6 +20,11 @@ http://vcpu.me/network1/
   * 1 for net2
     * eth0
 
+CIDR
+* 192.168.55.0/24 for enp0s8 and net1::eth2
+* 10.0.1.0/24 for net0::eth0 and net1::eth0
+* 10.0.2.0/24 for net2::eth0 and net1::eth1
+
 default gw
 * current ns default gw is 92.168.55.254
 * net0 default gw is 10.0.1.2
