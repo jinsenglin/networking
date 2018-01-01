@@ -84,10 +84,29 @@ create ovs br flow, e.g. ?
 
 # commands II
 
-move device, e.g. net0_eth0, from current ns to another ns, e.g. net0
+move device, e.g. tap0, from current ns to another ns, e.g. ns1
 
 ```
-#ip link add net0_eth0 type veth peer name tap0
-#ip netns add net0
-ip link set dev net0_eth0 netns net0
+#ip link add tap0 type veth peer name tap1          # create veth pair
+#ip netns add ns1                                   # create ns
+ip link set dev tap0 netns ns1
+#ip link exec ns1 ip link set dev tap0 name eth0    # rename tap0 -> eth0
+#ip link exec ns1 ip addr add 10.0.1.2/24 dev eth0  # i.e. ifconfig eth0 10.0.1.2
+#ip link exec ns1 ip link set dev eth0 up           # i.e. ifconfig eth0 up
+```
+
+attach virtual device, e.g. tap0, to linux bridge, e.g. br0
+
+```
+#ip link add tap0 type veth peer name tap1          # create veth pair
+#brctl addbr br0                                    # create linux bridge
+ip link set dev tap0 master br0
+```
+
+attach physical device, e.g. enp0s8, to linux bridge, e.g. br0
+
+```
+#ip addr flush dev enp0s8                           # clear physical device
+#brctl addbr br0                                    # create linux bridge
+brctl addif br0 enp0s8
 ```
