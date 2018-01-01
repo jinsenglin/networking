@@ -31,5 +31,5 @@ default gw
 * net1 default gw is 192.168.55.254
 * net2 default gw is 10.0.2.2
 
-snat
+ip forwarding
 * net1 do snat for net0 and net2
