@@ -14,8 +14,35 @@ CIDR
 * 1.1.1.0/24 for ns1::vpeerns1 and ns2::vpeerns2
 
 ip forwarding
-* root ns do nat for ns1 and ns2
+* root ns do ip forwarding for ns1 and ns2
 
-# PART II - VLAN
+# PART II - Allowing 2 VLAN to Communicate to Each Other
 
-WIP
+2 VLAN tags: 100, 200
+* dev ns1::vpeerns1.100 vlan id 100
+* dev ns2::vpeerns2.200 vlan id 200
+
+CIDR
+* 2.2.2.0/24 for ns1::vpeerns1.100 and ns2::vpeerns2.200
+
+OpenFlow rule (default)
+
+```
+ovs-ofctl dump-flows br0
+
+# NXST_FLOW reply (xid=0x4):
+#  cookie=0x0, duration=13357.785s, table=0, n_packets=0, n_bytes=0, idle_age=13357, priority=0 actions=NORMAL
+```
+
+OpenFlow rule (new)
+
+```
+ovs-ofctl del-flows br0
+ovs-ofctl -O openflow13 add-flow br0 "dl_vlan=100 actions=mod_vlan_vid:200,output:2"
+ovs-ofctl -O openflow13 add-flow br0 "dl_vlan=200 actions=mod_vlan_vid=100,output:1"
+
+ovs-ofctl dump-flows br0
+# NXST_FLOW reply (xid=0x4):
+#  cookie=0x0, duration=1710.499s, table=0, n_packets=14, n_bytes=1068, idle_age=21, dl_vlan=200 actions=mod_vlan_vid:100,output:1
+#  cookie=0x0, duration=1687.621s, table=0, n_packets=24, n_bytes=1216, idle_age=21, dl_vlan=100 actions=mod_vlan_vid:200,output:2
+```
