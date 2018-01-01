@@ -31,5 +31,18 @@ default gw
 * net1 default gw is 192.168.55.254
 * net2 default gw is 10.0.2.2
 
-ip forwarding
+ip forwarding via iptables
 * net1 do snat for net0 and net2
+
+iptables rules
+* ip netns exec net1 iptables -t nat -A POSTROUTING -s 10.0.1.0/24 -o eth2 -j MASQUERADE
+* ip netns exec net1 iptables -t nat -A POSTROUTING -s 10.0.2.0/24 -o eth2 -j MASQUERADE
+
+NOTE
+
+Using SNAT is better than MASQUERADE
+
+```
+ip netns exec net1 iptables -t nat -A POSTROUTING -s 10.0.2.0/24 -o eth2 -j SNAT --to-source 192.168.55.233
+ip netns exec net1 iptables -t nat -A POSTROUTING -s 10.0.2.0/24 -o eth2 -j SNAT --to-source 192.168.55.233
+```
