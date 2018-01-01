@@ -1,6 +1,7 @@
 # networking
 
 1. http://vcpu.me/network1/
+2. http://plasmixs.github.io/network-namespaces-ovs.html
 
 # commands I
 

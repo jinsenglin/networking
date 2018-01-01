@@ -32,7 +32,7 @@ default gw
 * net2 default gw is 10.0.2.2
 
 ip forwarding via iptables
-* net1 do snat for net0 and net2
+* ns net1 do snat for net0 and net2
 
 iptables rules
 * ip netns exec net1 iptables -t nat -A POSTROUTING -s 10.0.1.0/24 -o eth2 -j MASQUERADE
