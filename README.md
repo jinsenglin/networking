@@ -110,3 +110,20 @@ attach physical device, e.g. enp0s8, to linux bridge, e.g. br0
 #brctl addbr br0                                    # create linux bridge
 brctl addif br0 enp0s8
 ```
+
+# Difference between SNAT and Masquerade
+
+REF https://unix.stackexchange.com/questions/21967/difference-between-snat-and-masquerade
+
+```
+The SNAT target requires you to give it an IP address to apply to all the outgoing packets. The MASQUERADE target lets you give it an interface, and whatever address is on that interface is the address that is applied to all the outgoing packets. In addition, with SNAT, the kernel's connection tracking keeps track of all the connections when the interface is taken down and brought back up; the same is not true for the MASQUERADE target.
+```
+
+```
+Basically SNAT and MASQUERADE do the same source NAT thing in the nat table within the POSTROUTING chain.
+
+Differences
+* MASQUERADE does not require --to-source as it was made to work with dynamically assigned IPs
+* SNAT works only with static IPs, that's why it has --to-source
+* MASQUERADE has extra overhead and is slower than SNAT because each time MASQUERADE target gets hit by a packet, it has to check for the IP address to use.
+```
