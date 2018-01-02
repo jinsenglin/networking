@@ -66,22 +66,10 @@ create linux br, e.g. br0
 brctl addbr br0
 ```
 
-create linux br if, e.g. if0
-
-```
-?
-```
-
 create ovs br, e.g. br1
 
 ```
 ovs-vsctl add-br br1
-```
-
-create ovs br port, e.g. port0
-
-```
-?
 ```
 
 create ovs br flow, e.g. ?
@@ -117,6 +105,22 @@ attach physical device, e.g. enp0s8, to linux bridge, e.g. br0
 #ip addr flush dev enp0s8                           # clear physical device
 #brctl addbr br0                                    # create linux bridge
 brctl addif br0 enp0s8
+```
+
+attach virtual device, e.g. tap0, to ovs bridge, e.g., br0
+
+```
+#ip link add tap0 type veth peer name tap1          # create veth pair
+#ovs-vsctl add-br br0                               # create ovs bridge
+ovs-vsctl add-port br0 tap0
+```
+
+attach physical device, e.g. enp0s8, to ovs bridge, e.g. br0
+
+```
+#ip addr flush dev enp0s8                           # clear physical device
+#brctl addbr br0                                    # create linux bridge
+ovs-vsctl add-port br0 enp0s8 -- set interface enp0s8 type=internal
 ```
 
 # Difference between SNAT and Masquerade
