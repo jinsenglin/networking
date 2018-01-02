@@ -8,3 +8,5 @@ https://yakking.branchable.com/posts/networking-5-dhcp/
 
 CIDR
 * 10.0.0.0/24 for the veth pair via dnsmasq
+
+DHCP server running the ns ns1
