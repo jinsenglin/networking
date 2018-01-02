@@ -24,10 +24,22 @@ turn on nic promisc mode, e.g. enp0s3
 ifconfig enp0s3 promisc
 ```
 
-create alias, e.g. enp0s3:0, with another IP, e.g., 192.168.168.1.6
+create nic alias, e.g. enp0s3:0, with another IP, e.g., 10.0.2.25
 
 ```
-ifconfig enp0s3:0 192.168.1.6 up 
+ifconfig enp0s3:0 10.0.2.25 up 
+```
+
+create nic vlan, e.g. enp0s3.100
+
+```
+modprobe 8021q
+vconfig add enp0s3 100
+
+or
+
+modprobe 8021q
+ip link add link enp0s3 name enp0s3.100 type vlan id 100
 ```
 
 create veth pair, e.g. veth0 and veth1
