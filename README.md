@@ -84,10 +84,11 @@ create ovs br, e.g. br1
 ovs-vsctl add-br br1
 ```
 
-create ovs br flow, e.g. ?
+create ovs br flow, e.g.
 
 ```
-?
+ovs-ofctl -O openflow13 add-flow br0 "dl_vlan=100 actions=mod_vlan_vid:200,output:2"
+ovs-ofctl -O openflow13 add-flow br0 "dl_vlan=200 actions=mod_vlan_vid=100,output:1"
 ```
 
 # commands II
