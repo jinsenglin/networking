@@ -2,7 +2,8 @@
 
 1. http://vcpu.me/network1/
 2. http://plasmixs.github.io/network-namespaces-ovs.html
-3. https://www.rdoproject.org/networking/networking-in-too-much-detail/
+3. https://yakking.branchable.com/posts/networking-5-dhcp/
+4. https://www.rdoproject.org/networking/networking-in-too-much-detail/
 
 # commands I
 
