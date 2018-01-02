@@ -137,6 +137,16 @@ attach physical device, e.g. enp0s8, to ovs bridge, e.g. br0
 ovs-vsctl add-port br0 enp0s8 -- set interface enp0s8 type=internal
 ```
 
+# commands III
+
+```
+ifconfig eth0
+
+=
+
+ip addr show dev eth0
+```
+
 # Difference between SNAT and Masquerade
 
 REF https://unix.stackexchange.com/questions/21967/difference-between-snat-and-masquerade
