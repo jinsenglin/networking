@@ -2,6 +2,7 @@
 
 1. http://vcpu.me/network1/
 2. http://plasmixs.github.io/network-namespaces-ovs.html
+3. https://www.rdoproject.org/networking/networking-in-too-much-detail/
 
 # commands I
 
@@ -21,6 +22,12 @@ turn on nic promisc mode, e.g. enp0s3
 
 ```
 ifconfig enp0s3 promisc
+```
+
+create alias, e.g. enp0s3:0, with another IP, e.g., 192.168.168.1.6
+
+```
+ifconfig enp0s3:0 192.168.1.6 up 
 ```
 
 create veth pair, e.g. veth0 and veth1
@@ -127,4 +134,19 @@ Differences
 * MASQUERADE does not require --to-source as it was made to work with dynamically assigned IPs
 * SNAT works only with static IPs, that's why it has --to-source
 * MASQUERADE has extra overhead and is slower than SNAT because each time MASQUERADE target gets hit by a packet, it has to check for the IP address to use.
+```
+
+# Linux Creating or Adding New Network Alias To a Network Card (NIC)
+
+REF https://www.cyberciti.biz/faq/linux-creating-or-adding-new-network-alias-to-a-network-card-nic/
+
+```
+Linux allows you to add additional network address using alias feature. Please note that all additional network IP address must be in same subnet. For example if your eth0 using 192.168.1.5 IP address then alias must be setup using 192.168.1.0/24 subnet.
+```
+
+```
+# ifconfig eth0:0 192.168.1.6 up
+# eth0:0 first NIC alias: 192.168.1.6
+
+ifconfig eth0:0 192.168.1.6 up
 ```

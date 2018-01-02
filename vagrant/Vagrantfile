@@ -18,8 +18,11 @@ Vagrant.configure("2") do |config|
     # Install openvswitch
     apt-get install -y openvswitch-switch
 
-    # Install linux bridge
+    # Install linux bridge utils
     apt-get install -y bridge-utils
+
+    # Install vlan utils
+    apt-get install -y vlan
 
     # Print net namespace
     ip netns ls
