@@ -7,6 +7,6 @@ https://yakking.branchable.com/posts/networking-5-dhcp/
 * one end is moved to ns ns1
 
 CIDR
-* 10.0.0.0/24 for the veth pair via dnsmasq
+* 10.0.0.0/24 for the veth pair
 
 DHCP server running the ns ns1
