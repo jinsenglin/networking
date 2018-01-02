@@ -13,9 +13,6 @@ http://plasmixs.github.io/network-namespaces-ovs.html
 CIDR
 * 1.1.1.0/24 for ns1::vpeerns1 and ns2::vpeerns2
 
-ip forwarding
-* root ns do ip forwarding for ns1 and ns2
-
 # PART II - Allowing 2 VLAN to Communicate to Each Other
 
 2 VLAN tags: 100, 200
