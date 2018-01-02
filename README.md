@@ -35,11 +35,6 @@ create nic vlan, e.g. enp0s3.100
 
 ```
 modprobe 8021q
-vconfig add enp0s3 100
-
-or
-
-modprobe 8021q
 ip link add link enp0s3 name enp0s3.100 type vlan id 100
 ```
 
@@ -145,6 +140,14 @@ ifconfig eth0
 =
 
 ip addr show dev eth0
+```
+
+```
+vconfig add enp0s3 100
+
+=
+
+ip link add link enp0s3 name enp0s3.100 type vlan id 100
 ```
 
 # Difference between SNAT and Masquerade
