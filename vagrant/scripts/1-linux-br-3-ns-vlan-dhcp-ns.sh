@@ -23,6 +23,12 @@ echo "$(date) | moved tap1 to ns1"
 ip link set dev tap3 netns ns2
 echo "$(date) | moved tap3 to ns2"
 
+ip link set dev tap0 master br0
+echo "$(date) | attached tap0 to br0"
+
+ip link set dev tap2 master br0
+echo "$(date) | attached tap2 to br0"
+
 modprobe 8021q
 echo "$(date) | loaded 8021q module into the kernel (root ns)"
 
@@ -43,12 +49,6 @@ echo "$(date) | loaded 8021q module into the kernel (ns2 ns)"
 
 ip netns exec ns2 ip link add link tap3 name tap3.100 type vlan id 100
 echo "$(date) | created alias tap3.100 with vlan tag 100 (ns2 ns)"
-
-ip link set dev tap0.100 master br0
-echo "$(date) | attached tap0.100 to br0"
-
-ip link set dev tap2.100 master br0
-echo "$(date) | attached tap2.100 to br0"
 
 ip netns exec ns1 ip addr add 10.10.10.1/24 dev tap1.100
 echo "$(date) | assigned 10.10.10.1/24 to ns1::tap1.100"
