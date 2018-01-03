@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 brctl addbr br0
 echo "$(date) | linux bridge br0 created"
 

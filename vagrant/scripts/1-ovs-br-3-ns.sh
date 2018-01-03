@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 ovs-vsctl add-br br0
 echo "$(date) | ovs bridge br0 created"
 

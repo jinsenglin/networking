@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 ip netns add ns1
 echo "$(date) | networking namesapce ns1 created"
 
