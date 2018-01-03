@@ -40,6 +40,18 @@ modprobe 8021q
 ip link add link enp0s3 name enp0s3.100 type vlan id 100
 ```
 
+create ovs br port vlan, e.g.
+
+```
+ovs-vsctl add-port br0 tap0 tag=100
+```
+
+create ovs br port vxlan, e.g.
+
+```
+ovs-vsctl add-port br0 vx1 -- set interface vx1 type=vxlan options:remote_ip=192.168.100.102
+```
+
 create veth pair, e.g. veth0 and veth1
 
 ```
