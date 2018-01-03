@@ -4,6 +4,7 @@
 2. http://plasmixs.github.io/network-namespaces-ovs.html
 3. https://yakking.branchable.com/posts/networking-5-dhcp/
 4. https://www.rdoproject.org/networking/networking-in-too-much-detail/
+5. http://blog.davidvassallo.me/2012/05/05/kvm-brctl-in-linux-bringing-vlans-to-the-guests/
 
 # commands I
 
