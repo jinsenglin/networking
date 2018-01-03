@@ -17,8 +17,8 @@ echo "$(date) | assigned ip 192.168.33.102 to ovs br br0"
 ip link set dev br0 up
 echo "$(date) | brought up ovs br br0"
 
-echo "ping vm1"
-ping 192.168.33.101
+#echo "ping vm1"
+#ping 192.168.33.101
 
 ovs-vsctl add-br br1
 echo "$(date) | created ovs bridge br1"
@@ -32,5 +32,5 @@ echo "$(date) | brought up ovs br br1"
 ovs-vsctl add-port br1 vx1 -- set interface vx1 type=vxlan options:remote_ip=192.168.33.101
 echo "$(date) | created vxlan port vx1 to ovs br br1"
 
-echo "ping vm1 via vxlan"
-ping 10.10.10.101
+#echo "ping vm1 via vxlan"
+#ping 10.10.10.101
