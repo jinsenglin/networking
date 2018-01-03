@@ -10,4 +10,6 @@ ip netns exec ns2 dhclient tap3.100 FAILED
 
 ```
 ovs br only exists in root ns. i.e. ovs br can not be created in other ns.
+
+# solution https://techandtrains.com/2014/02/08/running-open-vswitch-in-network-namespace/
 ```
