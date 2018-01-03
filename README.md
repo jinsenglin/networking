@@ -150,6 +150,16 @@ vconfig add enp0s3 100
 ip link add link enp0s3 name enp0s3.100 type vlan id 100
 ```
 
+```
+brctl addbr br0
+
+=
+
+ip link add name br0 type bridge
+ip link set br0 up
+```
+
+
 # Difference between SNAT and Masquerade
 
 REF https://unix.stackexchange.com/questions/21967/difference-between-snat-and-masquerade
