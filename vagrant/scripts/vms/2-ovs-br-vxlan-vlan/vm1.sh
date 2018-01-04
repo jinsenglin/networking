@@ -37,3 +37,13 @@ echo "$(date) | created vxlan port vx1 to ovs br br1"
 
 #echo "ping vm2 via vxlan"
 #ping -c 1 10.10.10.102
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+ip link add tap0 type veth peer name tap1
+ip link set dev tap0 up
+ip link set dev tap1 up
+ip addr add 10.10.10.103/24 dev tap1
+ip route del 10.10.10.0/24 dev tap1
+ovs-vsctl add-port br1 tap0 tag=100
+#ping -c 1 10.10.10.104
