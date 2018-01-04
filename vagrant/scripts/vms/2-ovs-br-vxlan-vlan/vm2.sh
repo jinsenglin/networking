@@ -18,22 +18,16 @@ ip link set dev br0 up
 echo "$(date) | brought up ovs br br0"
 
 #echo "ping vm1"
-#ping 192.168.33.101
+#ping -c 1 192.168.33.101
 
 ovs-vsctl add-br br1
 echo "$(date) | created ovs bridge br1"
 
-ip tuntap add name tap0 mode tap
-echo "$(date) | created dev tap0"
+ip addr add 10.10.10.102/24 dev br1
+echo "$(date) | assigned ip 10.10.10.102 to ovs br br1"
 
-ip link set dev tap0 up
-echo "$(date) | brought up dev tap0"
-
-ovs-vsctl add-port br1 tap0 tag=100
-echo "$(date) | attached dev tap0 to ovs br br0 with vlan tag 100"
-
-ip addr add 10.10.10.102/24 dev tap0
-echo "$(date) | assigned ip to dev tap0"
+ovs-vsctl set port br1 tag=100
+echo "$(date) | assigned vlan tag 100 to ovs port br1"
 
 ip link set dev br1 up
 echo "$(date) | brought up ovs br br1"
@@ -42,4 +36,4 @@ ovs-vsctl add-port br1 vx1 -- set interface vx1 type=vxlan options:remote_ip=192
 echo "$(date) | created vxlan port vx1 to ovs br br1"
 
 #echo "ping vm1 via vxlan"
-#ping 10.10.10.101
+#ping -c 1 10.10.10.101
