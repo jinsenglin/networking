@@ -23,12 +23,17 @@ echo "$(date) | brought up ovs br br0"
 ovs-vsctl add-br br1
 echo "$(date) | created ovs bridge br1"
 
-# TODO
-# (1) tap
-# (2) attach and assign vlan tag
-# (3) assign ip
-#ip addr add 10.10.10.101/24 dev br1
-#echo "$(date) | assigned ip 10.10.10.101 to ovs br br1"
+ip tuntap add name tap0 mode tap
+echo "$(date) | created dev tap0"
+
+ip link set dev tap0 up
+echo "$(date) | brought up dev tap0"
+
+ovs-vsctl add-port br1 tap0 tag=100
+echo "$(date) | attached dev tap0 to ovs br br0 with vlan tag 100"
+
+ip addr add 10.10.10.101/24 dev tap0
+echo "$(date) | assigned ip to dev tap0"
 
 ip link set dev br1 up
 echo "$(date) | brought up ovs br br1"
