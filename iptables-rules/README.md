@@ -47,5 +47,5 @@ iptables -t nat -A PREROUTING -d 192.168.100.200 -j DNAT --to-destination 192.16
 By Line Number
 
 ```
-iptables -D <CHAIN NAME> <RULE LINE NUMBER>
+iptables -D -t <TABLE NAME> <CHAIN NAME> <RULE LINE NUMBER>
 ```
