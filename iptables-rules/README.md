@@ -16,6 +16,14 @@ https://vsxen.github.io/2017/08/15/iptables/
 
 ---
 
+# List Rule
+
+Rules in NAT Table
+
+```
+iptables -t -nat -L --line-numbers
+```
+
 # Add Rule
 
 SNAT
@@ -32,4 +40,12 @@ DNAT
 
 ```
 iptables -t nat -A PREROUTING -d 192.168.100.200 -j DNAT --to-destination 192.168.100.100
+```
+
+# Delete Rule
+
+By Line Number
+
+```
+iptables -D <CHAIN NAME> <RULE LINE NUMBER>
 ```
