@@ -31,23 +31,23 @@ ip route del default
 Add Static Route (net)
 
 ```
-ip route add 192.0.2.0/24 via 10.0.0.1 [dev ifname]
+ip route add 192.0.2.0/24 via 192.168.33.102 [dev ifname]
 ```
 
 Delete Static Route (net)
 
 ```
-ip route del 192.0.2.0/24 via 10.0.0.1 [dev ifname]
+ip route del 192.0.2.0/24 via 192.168.33.102 [dev ifname]
 ```
 
 Add Static Route (host)
 
 ```
-ip route add 192.0.2.1 via 10.0.0.1 [dev ifname]
+ip route add 192.0.2.1 via 192.168.33.102 [dev ifname]
 ```
 
 Delete Static Route (host)
 
 ```
-ip route del 192.0.2.1 via 10.0.0.1 [dev ifname]
+ip route del 192.0.2.1 via 192.168.33.102 [dev ifname]
 ```
