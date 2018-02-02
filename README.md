@@ -205,3 +205,32 @@ Linux allows you to add additional network address using alias feature. Please n
 
 ifconfig eth0:0 192.168.1.6 up
 ```
+
+# KVM MAC
+
+Host: `fe:54:00:b1:33:46`
+
+```
+# ifconfig vnet0
+vnet0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::fc54:ff:feb1:3346  prefixlen 64  scopeid 0x20<link>
+        ether fe:54:00:b1:33:46  txqueuelen 1000  (Ethernet)
+        RX packets 1362103  bytes 22112236891 (20.5 GiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 4247167  bytes 383364556 (365.6 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
+
+Guest: `52:54:00:b1:33:46`
+
+```
+ifconfig eth0
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 101.0.202.30  netmask 255.255.255.0  broadcast 101.0.202.255
+        inet6 fe80::5054:ff:feb1:3346  prefixlen 64  scopeid 0x20<link>
+        ether 52:54:00:b1:33:46  txqueuelen 1000  (Ethernet)
+        RX packets 4248531  bytes 383514604 (365.7 MiB)
+        RX errors 0  dropped 580712  overruns 0  frame 0
+        TX packets 1362740  bytes 22135848795 (20.6 GiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
