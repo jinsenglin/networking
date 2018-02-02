@@ -206,7 +206,7 @@ Linux allows you to add additional network address using alias feature. Please n
 ifconfig eth0:0 192.168.1.6 up
 ```
 
-# KVM MAC
+# KVM MAC Naming Pattern
 
 Host: `fe:54:00:b1:33:46`
 
