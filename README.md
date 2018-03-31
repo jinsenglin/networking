@@ -238,3 +238,9 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 OpenStack KVM :: Guest :: eth0 `fa:16:3e:24:c6:cc`
 
 OpenStack KVM :: HOST (i.e. Compute Node) :: tapb4facc08-c9 `fe:16:3e:24:c6:cc`
+
+* -> linux bridge :: qbrb4facc08-c9
+* -> veth pair :: linux bridge port :: qvbb4facc08-c9@qvob4facc08-c9
+* -> veth pair :: ovs br-int port :: qvob4facc08-c9@qvbb4facc08-c9
+
+diagram see https://github.com/lorin/openstack-hackspace/blob/master/under-the-hood-network.md
