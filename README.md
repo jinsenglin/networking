@@ -234,3 +234,7 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX packets 1362740  bytes 22135848795 (20.6 GiB)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
+
+OpenStack KVM :: Guest :: eth0 `fa:16:3e:24:c6:cc`
+
+OpenStack KVM :: HOST (i.e. Compute Node) :: tapb4facc08-c9 `fe:16:3e:24:c6:cc`
