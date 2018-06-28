@@ -1,3 +1,5 @@
+# use nmtui to configure centos7 networking
+
 # networking
 
 1. http://vcpu.me/network1/
